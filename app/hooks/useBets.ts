@@ -69,7 +69,7 @@ export function useBets() {
         status: 'open',
       };
       setBets(prev => [newBet, ...prev]);
-      return newBet;
+      // Return void to match the expected type
     } catch (err) {
       throw new Error('Failed to create bet');
     }

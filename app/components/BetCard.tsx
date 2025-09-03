@@ -9,7 +9,7 @@ interface BetCardProps {
   bet: Bet;
   variant?: 'active' | 'settled' | 'create';
   className?: string;
-  onSettle?: (betId: string) => void;
+  onSettle?: (betId: string, winningParticipantId: string) => void;
 }
 
 const statusColors = {
@@ -63,7 +63,7 @@ export function BetCard({ bet, variant = 'active', className, onSettle }: BetCar
         
         {variant === 'active' && bet.status === 'in_progress' && onSettle && (
           <button 
-            onClick={() => onSettle(bet.betId)}
+            onClick={() => onSettle(bet.betId, bet.participants[0])}
             className="btn-primary text-xs px-3 py-1"
           >
             Settle
